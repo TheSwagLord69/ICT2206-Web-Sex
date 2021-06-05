@@ -23,24 +23,33 @@
 
 	<section class="section-content padding-y bg">
 			<div class="container">
-				<h1>Reviewing some item</h1>
+				<h1>Review</h1>
 				<div class="row">
 					<aside class="col-md-10">
 						<!-- ============================ COMPONENT FEEDBACK  ================================= -->
 						<div class="card">
 						  <div class="card-body">
-						  <h4 class="card-title mb-4">*insert item name here using php*</h4>
+						  <h4 class="card-title mb-4">You are currently reviewing</h4>
 						  <form>
 							<div class="form-group">
-								<label>Your Review</label>
-								<textarea class="form-control" rows="3"></textarea>
+								<?php
+								if ($_SERVER["REQUEST_METHOD"] == "POST") {
+									// collect value of input field
+									$name = $_POST['item_name'];
+									if (empty($name)) {
+										echo "Error: Item is empty";
+									} else {
+										echo "<label>$name</label>";
+									}
+								}
+								?>
+								<br/><br/>
+								<textarea class="form-control" rows="10" cols="50" placeholder="What are your thoughts?"></textarea>
 							</div>
-							<div class="form-group">
-								<label  for="exampleFormControlFile1">
-									<input type="file" class="form-control-file">
-								</label>
-							</div>
-							<button class="btn btn-primary btn-block">Submit</button>
+							<br/>
+							<aside class="col-md-2">
+								<button class="btn btn-primary btn-block">Submit</button>
+							</aside>
 						  </form>
 						  </div> <!-- card-body.// -->
 						</div> <!-- card .// -->
