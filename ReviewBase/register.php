@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php include('conn.php')?>
-
+<?php
+session_start();
+if (isset($_SESSION['user_id']) && $_SESSION['isloggedin'] == true) {
+    header('location: myreviews.php');
+}
+?>
 
 <?php
 // define variables and set to empty values
@@ -10,7 +15,7 @@ $username = $password = $confirm_password = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-	$username = $_POST["username"];
+	$username = trim($_POST["username"]);
 	$password = $_POST["password"];
 	$pattern = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/';
 	$confirm_password = $_POST["confirm_password"];
@@ -57,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		} else {
 			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
-		header("Location: login2.php");
+		header("Location: login.php");
 	}
 }
 ?>

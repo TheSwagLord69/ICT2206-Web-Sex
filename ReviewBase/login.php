@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php include('conn.php')?>
+<?php
+session_start();
+if (isset($_SESSION['user_id']) && $_SESSION['isloggedin'] == true) {
+    header('location: myreviews.php');
+}
+?>
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -15,7 +23,48 @@
 		<link href="assets/css/style.css?v=2.0" rel="stylesheet" />
 	</head>
 	<body>
-	
+		
+		<?php
+		// define variables and set to empty values
+
+		$usernameErr = $passwordErr = "";
+		$username = $password = "";
+		
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			
+			$username = trim($_POST["username"]);
+			$password = $_POST["password"];
+			
+			$sql_login_authentication = "SELECT * FROM user_accounts WHERE username='".$username."' AND password = '".$password."'";
+			$result_check_account = mysqli_query($conn,$sql_login_authentication );
+			
+			$success = True;
+			
+
+			if (empty($username)) {
+				$usernameErr = "<div class=\"errorstyle\">Please enter a username</div>";
+				$success = False;
+			}
+			
+			if (empty($password)) {
+				$passwordErr = "<div class=\"errorstyle\">Please enter a password</div>";
+				$success = False;
+			}
+			
+			if(mysqli_num_rows($result_check_account) == 1) {
+				$row = mysqli_fetch_array($result_check_account);
+				$_SESSION['user_id'] = trim($row["user_id"]);
+				$_SESSION['isloggedin'] = true;
+				header("location: myreviews.php");                                                                                                                                                                                                                  
+			}
+			else{
+				$result_check_account_Err = "Your Login Name or Password is invalid";
+				$success = False;
+			}
+		}
+
+		?>
+
 		<?php
 		include 'navbar.php';
 		?>
@@ -28,21 +77,27 @@
 						<div class="card">
 						  <div class="card-body">
 						  <h4 class="card-title mb-4">Sign in</h4>
-						  <form>
+						  <form action="#" method="post">
 							  <div class="form-group">
-								 <label>Email</label>
-								 <input name="" class="form-control" placeholder="ex. name@gmail.com" type="email">
+								 <label>Username</label>
+								 <input type="text" class="form-control" placeholder="Username" name = "username">
+								 <?php echo $usernameErr;?>
 							  </div> <!-- form-group// -->
 							  <div class="form-group">
 								<a class="float-right" href="#">Forgot</a>
 								<label>Password</label>
-								<input class="form-control" placeholder="******" type="password">
-							  </div> <!-- form-group// --> 
+								<input type="password" class="form-control"  placeholder="Password" name = "password">
+                    			<?php echo $passwordErr;
+								if (!empty($result_check_account_Err)) {
+									echo $result_check_account_Err;
+								}
+								?>
+							  </div> <!-- form-group// -->
 							  <div class="form-group"> 
 								<label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> Remember </div> </label>
 							  </div> <!-- form-group form-check .// -->
 							  <div class="form-group">
-								  <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+								  <button type="submit" name="submit" value="submit" class="btn btn-primary btn-block"> Login  </button>
 							  </div> <!-- form-group// -->    
 						  </form>
 						  </div> <!-- card-body.// -->
