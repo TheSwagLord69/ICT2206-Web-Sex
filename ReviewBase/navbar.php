@@ -24,9 +24,14 @@
 			session_start();
 		}
 		if (isset($_SESSION['user_id']) && $_SESSION['isloggedin'] == true) {
-			echo '<li><p class="navbar-text">Hello, ';
-			echo $_SESSION['user_id'];
-			echo "</p></li>";
+			
+			$user_id = $_SESSION['user_id'];
+			$sql = " SELECT username FROM user_accounts WHERE user_id= '$user_id' ";
+			$result_name = mysqli_query($conn,$sql);
+			$row = mysqli_fetch_array($result_name);
+			$name = $row["username"];
+			
+			echo '<li><p class="navbar-text">Hello, ' . $name . '</p></li>';
 			echo '
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
