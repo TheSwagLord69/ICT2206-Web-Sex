@@ -33,8 +33,17 @@
 						<!-- ============================ COMPONENT DO REVIEW  ================================= -->
 						<div class="card">
 						  <div class="card-body">
+							<?php
+							if ($_SERVER["REQUEST_METHOD"] != "POST") {
+								echo '
+									<div class="alert alert-warning" role="alert">
+										<a href="category.php">Please select item to review</a>
+									</div>
+									';
+							}
+							?>
 						  <h4 class="card-title mb-4">You are currently reviewing</h4>
-						  <form>
+						  <form action="handle_review_posting.php" method="post">
 							<div class="form-group">
 								<?php
 								if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -45,10 +54,25 @@
 									} else {
 										echo "<label>$name</label>";
 									}
+								} else {
+									echo "<label>No item selected</label>";
 								}
 								?>
 								<br/><br/>
-								<textarea class="form-control" rows="10" cols="50" placeholder="What are your thoughts?"></textarea>
+								<?php
+								if ($_SERVER["REQUEST_METHOD"] == "POST") {
+									// Get product name from products page
+									$name = $_POST['item_name'];
+									if (empty($name)) {
+										echo '<input type="hidden" name="item_name" value="" />';
+									} else {
+										echo '<input type="hidden" name="item_name" value="'. $name .'" />';
+									}
+								} else {
+									echo '<input type="hidden" name="item_name" value="" />';
+								}
+								?>
+								<textarea name="user_review_data" class="form-control" rows="10" cols="50" placeholder="What are your thoughts?"></textarea>
 							</div>
 							<br/>
 							<aside class="col-md-2">
