@@ -19,6 +19,10 @@
 	
 	<?php
 	include 'navbar.php';
+	
+	if ($_SESSION['isloggedin'] == false){ //check for no login
+		header('location: login.php'); //redirect to login page
+	}
 	?>
 
 	<section class="section-content padding-y bg">
@@ -34,7 +38,7 @@
 							<div class="form-group">
 								<?php
 								if ($_SERVER["REQUEST_METHOD"] == "POST") {
-									// collect value of input field
+									// Get product name from products page
 									$name = $_POST['item_name'];
 									if (empty($name)) {
 										echo "Error: Item is empty";
