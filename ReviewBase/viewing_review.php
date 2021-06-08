@@ -57,7 +57,7 @@
 				</h1>
 				<div class="row">
 					<aside class="col-md-10">
-						<!-- ============================ COMPONENT FEEDBACK  ================================= -->
+						<!-- ============================ COMPONENT VIEW REVIEW  ================================= -->
 						<div class="card">
 						  <div class="card-body">
 						  <h4 class="card-title mb-4">What people think about this</h4>
@@ -158,7 +158,7 @@
 							
 						  </div> <!-- card-body.// -->
 						</div> <!-- card .// -->
-						<!-- ============================ COMPONENT FEEDBACK END.// ================================= -->
+						<!-- ============================ COMPONENT VIEW REVIEW END.// ================================= -->
 					</aside>
 				</div>
 			</div>
