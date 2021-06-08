@@ -14,25 +14,40 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	  <ul class="nav navbar-nav">
-		<!--<li class="active"><a href="category.php">Category of products</a></li>-->
 		<li><a href="category.php">Category of products</a></li>
-		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-		  <ul class="dropdown-menu" role="menu">
-			<li><a href="aboutus.php">About us</a></li>
-			<li><a href="aboutus.php">About us</a></li>
-			<li><a href="aboutus.php">About us</a></li>
-			<li class="divider"></li>
-			<li><a href="aboutus.php">About us</a></li>
-			<li class="divider"></li>
-			<li><a href="aboutus.php">About us</a></li>
-		  </ul>
-		</li>
+		<li><a href="aboutus.php">About us</a></li>
 	  </ul>
 	  <ul class="nav navbar-nav navbar-right">
-		<li><p class="navbar-text">Already have an account?</p></li>
-		<li class="dropdown">
-		  <a href="login.php"><b>Login</b></a>
+		<?php
+		include('conn.php');
+		if (session_status() === PHP_SESSION_NONE) { //check if php session has not yet started
+			session_start();
+		}
+		if (isset($_SESSION['user_id']) && $_SESSION['isloggedin'] == true) {
+			echo '<li><p class="navbar-text">Hello, ';
+			echo $_SESSION['user_id'];
+			echo "</p></li>";
+			echo '
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
+				  <ul class="dropdown-menu" role="menu">
+					<li><a href="myreviews.php">My Reviews</a></li>
+					<li class="divider"></li>
+					<li><a href="logout.php">Log out</a></li>
+				  </ul>
+				</li>
+			';
+		} else {
+			echo '
+				<li>
+					<p class="navbar-text">Already have an account?</p>
+				</li>
+				<li class="dropdown">
+					<a href="login.php"><b>Login</b></a>
+				</li>
+			';
+		}
+		?>
 	  </ul>
 	</div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
