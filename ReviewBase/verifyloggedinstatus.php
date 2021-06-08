@@ -11,6 +11,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['isloggedin'] == true) {
     
 }
 else{
-    header('location: login2.php');
+    header('location: login.php');
 }
 ?>
