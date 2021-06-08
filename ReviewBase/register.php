@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							<p class="text-muted">By clicking the 'Register' button, you confirm that you accept our Terms of use and Privacy Policy.</p>                                          
 						</form>
 						<hr>
-						<p class="text-center">Have an account? <a href="login2.php">Log In</a></p>
+						<p class="text-center">Have an account? <a href="login.php">Log In</a></p>
 						</article> <!-- card-body end .// -->
 						</div> <!-- card.// -->
 						<!-- ============================ COMPONENT SIGNUP  END .// ================================= -->
