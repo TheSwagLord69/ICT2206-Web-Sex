@@ -26,7 +26,7 @@
 				<h1>Review</h1>
 				<div class="row">
 					<aside class="col-md-10">
-						<!-- ============================ COMPONENT FEEDBACK  ================================= -->
+						<!-- ============================ COMPONENT DO REVIEW  ================================= -->
 						<div class="card">
 						  <div class="card-body">
 						  <h4 class="card-title mb-4">You are currently reviewing</h4>
@@ -53,7 +53,7 @@
 						  </form>
 						  </div> <!-- card-body.// -->
 						</div> <!-- card .// -->
-						<!-- ============================ COMPONENT FEEDBACK END.// ================================= -->
+						<!-- ============================ COMPONENT DO REVIEW END.// ================================= -->
 					</aside>
 				</div>
 			</div>
