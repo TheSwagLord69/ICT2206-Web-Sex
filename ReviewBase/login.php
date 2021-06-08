@@ -84,7 +84,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['isloggedin'] == true) {
 								 <?php echo $usernameErr;?>
 							  </div> <!-- form-group// -->
 							  <div class="form-group">
-								<a class="float-right" href="#">Forgot</a>
 								<label>Password</label>
 								<input type="password" class="form-control"  placeholder="Password" name = "password">
                     			<?php echo $passwordErr;
@@ -92,6 +91,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['isloggedin'] == true) {
 									echo $result_check_account_Err;
 								}
 								?>
+								<a class="float-right" href="#">Forget password?</a>
 							  </div> <!-- form-group// -->
 							  <div class="form-group"> 
 								<label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> Remember </div> </label>
