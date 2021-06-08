@@ -74,6 +74,22 @@ if (isset($_SESSION['user_id']) && $_SESSION['isloggedin'] == true) {
 				<div class="row">
 					<aside class="col-md-6">
 						<!-- ============================ COMPONENT LOGIN 1  ================================= -->
+						<?php
+						$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+						//echo $url;
+						$url_components = parse_url($url);
+						//echo print_r($url_components);
+						if (array_key_exists('query', $url_components)) {
+							parse_str($url_components['query'], $query);
+							if ($query['usercreated'] == "yes"){
+								echo '
+									<div class="alert alert-success" role="alert">
+										Account created successfully!
+									</div>
+								';
+							}
+						}
+						?>
 						<div class="card">
 						  <div class="card-body">
 						  <h4 class="card-title mb-4">Sign in</h4>
