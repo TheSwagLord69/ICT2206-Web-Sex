@@ -44,6 +44,72 @@
 				<div class="row">
 					<aside class="col-md-12">
 						<!-- ============================ COMPONENTS CATEGORY ITEMS  ================================= -->
+						<?php
+						include('conn.php');
+						$sql = "SELECT * FROM product_data";
+						$result = $conn->query($sql);
+						if ($result->num_rows > 0) {
+							$counter = 0;
+							//var_dump($counter);
+							while($row = $result->fetch_assoc()) {
+								
+								if ($counter < 3){
+									if ($counter == 0){
+										echo '<div class="card card-body">';
+										echo '<div class="row">';
+									}
+									$counter++;
+									echo '<div class="col-md-3">';
+										echo '<figure class="itemside mb-4">';
+											$image = $row["product_image"];
+											echo '<div class="aside"><img src="data:image/png;base64,' . base64_encode($row['product_image']) . '" width = "50px" height = "50px" class="border img-sm"></div>';
+												echo '<figcaption class="info align-self-center">';
+													echo '<form action="viewing_review.php" method="post">';
+														echo '<input type="hidden" name="item_name" value="' . $row["product_name"] . '" />';
+														echo '<button name="review" value="review" type="submit" class="btn btn-link title">' . $row["product_name"] . '</button>';
+													echo '</form>';
+												echo '</figcaption>';
+													echo '<form action="doing_review.php" method="post">';
+														echo '<input type="hidden" name="item_name" value="' . $row["product_name"] . '" />';
+														echo '<button name="review" value="review" type="submit" class="btn btn-link text-primary btn-sm">Review</button>';
+													echo '</form>';
+												echo '<figcaption class="info align-self-center">';
+												echo '</figcaption>';
+										echo '</figure>';
+									echo '</div>';
+								}
+								else{
+									$counter++;
+									echo '<div class="col-md-3">';
+										echo '<figure class="itemside mb-4">';
+											$image = $row["product_image"];
+											echo '<div class="aside"><img src="data:image/png;base64,' . base64_encode($row['product_image']) . '" width = "50px" height = "50px" class="border img-sm"></div>';
+												echo '<figcaption class="info align-self-center">';
+													echo '<form action="viewing_review.php" method="post">';
+														echo '<input type="hidden" name="item_name" value="' . $row["product_name"] . '" />';
+														echo '<button name="review" value="review" type="submit" class="btn btn-link title">' . $row["product_name"] . '</button>';
+													echo '</form>';
+												echo '</figcaption>';
+													echo '<form action="doing_review.php" method="post">';
+														echo '<input type="hidden" name="item_name" value="' . $row["product_name"] . '" />';
+														echo '<button name="review" value="review" type="submit" class="btn btn-link text-primary btn-sm">Review</button>';
+													echo '</form>';
+												echo '<figcaption class="info align-self-center">';
+												echo '</figcaption>';
+										echo '</figure>';
+									echo '</div>';
+									$counter = 0;
+									echo '</div> <!-- row.// -->';
+									echo '</div> <!-- card // -->';
+									echo '<br/>';
+								}
+							}
+						}
+						?>
+						
+						<div style="padding-bottom:300px;"></div>
+						<h2>=========== static below ===========</h2>
+						
 						<div class="card card-body">
 							<div class="row">
 								<div class="col-md-3">
