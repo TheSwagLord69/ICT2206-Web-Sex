@@ -43,7 +43,7 @@
 				<br/>
 				<div class="row">
 					<aside class="col-md-12">
-						<!-- ============================ COMPONENTS 6  ================================= -->
+						<!-- ============================ COMPONENTS CATEGORY ITEMS  ================================= -->
 						<div class="card card-body">
 							<div class="row">
 								<div class="col-md-3">
@@ -380,7 +380,7 @@
 							</div> <!-- row.// -->
 						</div> <!-- card // -->
 						<br/>
-						<!-- ============================ COMPONENTS 6  END .// ================================= -->
+						<!-- ============================ COMPONENTS CATEGORY ITEMS  END .// ================================= -->
 					</aside>
 				</div>
 			</div>
