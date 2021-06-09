@@ -27,18 +27,36 @@
 			<div class="container">
 				<div class="row">
 					<aside class="col-md-6">
-						<!-- ============================ COMPONENT SIGNUP ================================= -->
+						<!-- ============================ COMPONENT MY REVIEWS ================================= -->
 						<div class="card">
 						<article class="card-body">
 						<header class="mb-4">
-							<h4 class="card-title"> Helo  <?php echo $name; ?> , your user_id is <?php echo $user_id; ?> .</h4>
-							<h4 class="card-title">My reviews</h4>
+							<h4 class="card-title mb-4"><?php echo $name; ?>'s Reviews</h4>
 							<a class="float-right" href="logout.php">Logout</a>
+							<?php
+							$user_id = $_SESSION['user_id'];
+							$sql = " SELECT * FROM review_data WHERE r_user_id= '$user_id' ";
+							if ($result = $conn->query($sql)) {
+								while ($row = $result->fetch_assoc()) {
+									$reviewid = $row["review_id"];
+									$userid = $row["r_user_id"];
+									$productid = $row["r_product_id"];
+									$userreview = $row["user_review"];
+									echo 
+										'<br/><tr>
+											<td>reviewid: '.$reviewid.'</td>
+											<td>userid: '.$userid.'</td>
+											<td>productid: '.$productid.'</td>
+											<td>userreview: '.$userreview.'</td>
+										</tr><br/>';
+								}
+							}
+							?>
 						</header>
 						<hr>
 						</article> <!-- card-body end .// -->
 						</div> <!-- card.// -->
-						<!-- ============================ COMPONENT SIGNUP  END .// ================================= -->
+						<!-- ============================ COMPONENT MY REVIEWS  END .// ================================= -->
 					</aside>
 				</div>
 			</div>
