@@ -67,7 +67,6 @@
 									
 									$sql = "INSERT INTO `review_data` (`r_user_id`, `r_product_id`, `user_review`)
 											VALUES ('$user_id', '$product_id', '$review_data')";  
-									//INSERT INTO `review_data` (`review_id`, `r_user_id`, `r_product_id`, `user_review`) VALUES (NULL, '6', '4', 'anotehter test');
 									
 									$conn->query($sql);
 									$conn->close();
