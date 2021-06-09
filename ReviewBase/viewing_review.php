@@ -160,6 +160,16 @@
 												';
 											
 										}
+									} else {
+										echo 
+										'
+										<div class="card p-3 mt-2">
+											<div class="d-flex justify-content-between align-items-center">
+												<small class="font-weight-bold">No reviews written yet...</small></span> <br/>
+												<small class="font-weight-bold">Be the first!</small></span> 
+											</div>
+										</div>
+										';
 									}
 									?>
 								</div>
