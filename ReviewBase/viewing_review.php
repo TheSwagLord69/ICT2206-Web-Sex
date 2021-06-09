@@ -101,66 +101,53 @@
 								</div>
 
 								<div class="col-md-8">
-									<div class="card p-3 mt-2">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="user d-flex flex-row align-items-center"> 
-												<!--<img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> -->
-												<span><small class="font-weight-bold text-primary">james_olesenn</small> 
-											</div> 
-											<div class="user d-flex flex-row align-items-center" style="width:500px;"> 
-												<small class="font-weight-bold">Hmm, This poster looks cool.</small></span> 
-											</div> 
-											<small>2 days ago</small>
-										</div>
-										<div class="action d-flex justify-content-between mt-2 align-items-center">
-											<div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
-										</div>
-									</div>
-									<div class="card p-3 mt-2">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="user d-flex flex-row align-items-center"> 
-												<!--<img src="https://i.imgur.com/C4egmYM.jpg" width="30" class="user-img rounded-circle mr-2"> -->
-												<span><small class="font-weight-bold text-primary">olan_sams</small> 
-											</div> 
-											<div class="user d-flex flex-row align-items-center"> 
-												<small class="font-weight-bold">Loving your work and profile! </small></span> 
-											</div> 
-											<small>3 days ago</small>
-										</div>
-										<div class="action d-flex justify-content-between mt-2 align-items-center">
-											<div class="icons align-items-center"> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
-										</div>
-									</div>
-									<div class="card p-3 mt-2">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="user d-flex flex-row align-items-center"> 
-												<!--<img src="https://i.imgur.com/0LKZQYM.jpg" width="30" class="user-img rounded-circle mr-2"> -->
-												<span><small class="font-weight-bold text-primary">rashida_jones</small> 
-											</div> 
-											<div class="user d-flex flex-row align-items-center">
-												<small class="font-weight-bold">Really cool Which filter are you using? </small></span> 
-											</div> 
-											<small>3 days ago</small>
-										</div>
-										<div class="action d-flex justify-content-between mt-2 align-items-center">
-											<div class="icons align-items-center"> <i class="fa fa-user-plus text-muted"></i> <i class="fa fa-star-o text-muted"></i> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
-										</div>
-									</div>
-									<div class="card p-3 mt-2">
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="user d-flex flex-row align-items-center"> 
-												<!--<img src="https://i.imgur.com/0LKZQYM.jpg" width="30" class="user-img rounded-circle mr-2"> -->
-												<span><small class="font-weight-bold text-primary">skrit_skritt68</small> 
-											</div> 
-											<div class="user d-flex flex-row align-items-center">
-												<small class="font-weight-bold">ESGETTIT asdasd asd asd asd asd as dwe a ds daw e ad w ad asd wad  32 33r wrf3w  3w w3we dxr ert e wwe we 3ew derw p </small></span> 
-											</div> 
-											<small>4 days ago</small>
-										</div>
-										<div class="action d-flex justify-content-between mt-2 align-items-center">
-											<div class="icons align-items-center"> <i class="fa fa-user-plus text-muted"></i> <i class="fa fa-star-o text-muted"></i> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
-										</div>
-									</div>
+									<?php
+									include('conn.php');
+									
+									$product_name = $_POST["item_name"];
+									
+									//get product id
+									$sql = "SELECT `product_id` FROM `product_data` WHERE `product_name` = '$product_name' ";
+									$result = $conn->query($sql);
+									while ($row = $result->fetch_assoc()) {
+										$product_id = $row["product_id"];
+									}
+									
+									$sql = "SELECT * FROM `review_data` WHERE `r_product_id` = '$product_id' ";
+									if ($result = $conn->query($sql)) {
+										while ($row = $result->fetch_assoc()) {
+											$reviewid = $row["review_id"];
+											$userid = $row["r_user_id"];
+											$productid = $row["r_product_id"];
+											$userreview = $row["user_review"];
+											
+											//get user name
+											$sql = "SELECT `username` FROM `user_accounts` WHERE `user_id` = '$userid' ";
+											$result = $conn->query($sql);
+											while ($row = $result->fetch_assoc()) {
+												$username = $row["username"];
+											}
+											
+											echo
+												'
+												<div class="card p-3 mt-2">
+													<div class="d-flex justify-content-between align-items-center">
+														<div class="user d-flex flex-row align-items-center"> 
+															<!--<span><small class="font-weight-bold text-primary">Anonymous</small>-->
+															<span><small class="font-weight-bold text-primary">'.$username.'</small>
+														</div> 
+														<div class="user d-flex flex-row align-items-center" style="width:500px;"> 
+															<small class="font-weight-bold">'.$userreview.'</small></span> 
+														</div> 
+													</div>
+													<div class="action d-flex justify-content-between mt-2 align-items-center">
+														<div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+													</div>
+												</div>
+												';
+										}
+									}
+									?>
 								</div>
 							
 						  </div> <!-- card-body.// -->
