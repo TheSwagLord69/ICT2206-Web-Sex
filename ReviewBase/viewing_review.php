@@ -31,6 +31,12 @@
 		.icons i {
 			margin-left: 8px
 		}
+		.reviewimage {
+			max-height:500px;
+			max-width:500px;
+			height:auto;
+			width:auto;
+		}
 		</style>
 
 	</head>
@@ -55,6 +61,16 @@
 				}
 				?>
 				</h1>
+				<?php
+				include('conn.php');
+				$sql = "SELECT product_image FROM product_data WHERE product_name = '$name'";
+				$result = $conn->query($sql);
+				if ($result->num_rows > 0) {
+					while($row = $result->fetch_assoc()) {
+						echo '<div class="aside"><img src="data:image/png;base64,' . base64_encode($row['product_image']) . '" class="border img-sm reviewimage"></div>';
+					}
+				}
+				?>
 				<h3>Description</h3>
 				<?php
 				include('conn.php');
@@ -172,6 +188,7 @@
 										';
 									}
 									?>
+									<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 								</div>
 						  </div> <!-- card-body.// -->
 						</div> <!-- card .// -->
