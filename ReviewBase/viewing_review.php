@@ -82,7 +82,14 @@
 														}
 														?>
 														' />
-														<button name="review" value="review" type="submit" class="btn btn-link text-primary btn-sm"><h5>Add your review!</h5></button>
+														
+														<figcaption class="info align-self-center">
+															<!--<a href="#" class="btn btn-light text-primary btn-sm"> Review </a>-->
+															<form action="doing_review.php" method="post">
+																<?php echo '<input type="hidden" name="item_name" value="' . $name . '" />'; ?>
+																<button name="review" value="review" type="submit" class="btn btn-link text-primary btn-sm"><h5>Add your review!</h5></button>
+															</form>
+														</figcaption>
 													</form>
 												</figcaption>
 											</figure>
