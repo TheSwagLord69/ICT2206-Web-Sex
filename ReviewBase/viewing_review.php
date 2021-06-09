@@ -103,38 +103,37 @@
 								<div class="col-md-8">
 									<?php
 									include('conn.php');
-									
-									$product_name = $_POST["item_name"];
-									
-									//get product id
-									$sql = "SELECT `product_id` FROM `product_data` WHERE `product_name` = '$product_name' ";
+									$sql = "SELECT product_id FROM product_data WHERE product_name = '$name'";
 									$result = $conn->query($sql);
-									while ($row = $result->fetch_assoc()) {
-										$product_id = $row["product_id"];
+									if ($result->num_rows > 0) {
+										while($row = $result->fetch_assoc()) {
+											$productid = $row["product_id"];
+										}
 									}
-									
-									$sql = "SELECT * FROM `review_data` WHERE `r_product_id` = '$product_id' ";
-									if ($result = $conn->query($sql)) {
-										while ($row = $result->fetch_assoc()) {
-											$reviewid = $row["review_id"];
+									$sql = "SELECT * FROM review_data WHERE r_product_id = '$productid'";
+									$result = $conn->query($sql);
+									if ($result->num_rows > 0) {
+										while($row = $result->fetch_assoc()) {
+											$review_id = $row["review_id"];
 											$userid = $row["r_user_id"];
-											$productid = $row["r_product_id"];
 											$userreview = $row["user_review"];
 											
-											//get user name
-											$sql = "SELECT `username` FROM `user_accounts` WHERE `user_id` = '$userid' ";
-											$result = $conn->query($sql);
-											while ($row = $result->fetch_assoc()) {
-												$username = $row["username"];
+											//To get username, will delete this later
+											$sql1 = "SELECT username FROM user_accounts WHERE user_id = '$userid'";
+											$result1 = $conn->query($sql1);
+											if ($result1->num_rows > 0) {
+												while($row = $result1->fetch_assoc()) {
+													$username = $row["username"];
+												}
 											}
 											
-											echo
+											echo 
 												'
 												<div class="card p-3 mt-2">
 													<div class="d-flex justify-content-between align-items-center">
 														<div class="user d-flex flex-row align-items-center"> 
-															<!--<span><small class="font-weight-bold text-primary">Anonymous</small>-->
-															<span><small class="font-weight-bold text-primary">'.$username.'</small>
+															<span><small class="font-weight-bold text-primary">'.$username.'</small> 
+															<!--<span><small class="font-weight-bold text-primary">Anonymous</small> -->
 														</div> 
 														<div class="user d-flex flex-row align-items-center" style="width:500px;"> 
 															<small class="font-weight-bold">'.$userreview.'</small></span> 
@@ -145,11 +144,11 @@
 													</div>
 												</div>
 												';
+											
 										}
 									}
 									?>
 								</div>
-							
 						  </div> <!-- card-body.// -->
 						</div> <!-- card .// -->
 						<!-- ============================ COMPONENT VIEW REVIEW END.// ================================= -->
