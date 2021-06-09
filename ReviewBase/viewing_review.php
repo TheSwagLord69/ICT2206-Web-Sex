@@ -55,6 +55,20 @@
 				}
 				?>
 				</h1>
+				<h3>Description</h3>
+				<?php
+				include('conn.php');
+				$sql = " SELECT product_description FROM product_data WHERE product_name = '$name' ";
+				if ($result = $conn->query($sql)) {
+					while ($row = $result->fetch_assoc()) {
+						$proddesc = $row["product_description"];
+					}
+				}
+				echo
+					'
+					<p>'.$proddesc.'</p>
+					';
+				?>
 				<div class="row">
 					<aside class="col-md-10">
 						<!-- ============================ COMPONENT VIEW REVIEW  ================================= -->
