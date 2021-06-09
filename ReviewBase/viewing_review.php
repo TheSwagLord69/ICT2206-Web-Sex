@@ -167,7 +167,7 @@
 															<span><small class="font-weight-bold text-primary">'.$username.'</small> 
 															<!--<span><small class="font-weight-bold text-primary">Anonymous</small> -->
 														</div> 
-														<div class="user d-flex flex-row align-items-center" style="width:500px;"> 
+														<div class="user d-flex flex-row align-items-center" style="width:400px;"> 
 															<small class="font-weight-bold">'.$userreview.'</small></span> 
 														</div> 
 													</div>
