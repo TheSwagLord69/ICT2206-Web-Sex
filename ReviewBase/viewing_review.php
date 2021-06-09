@@ -33,7 +33,7 @@
 		}
 		.reviewimage {
 			max-height:500px;
-			max-width:500px;
+			max-width:350px;
 			height:auto;
 			width:auto;
 		}
@@ -61,35 +61,37 @@
 				}
 				?>
 				</h1>
-				<?php
-				include('conn.php');
-				$sql = "SELECT product_image FROM product_data WHERE product_name = '$name'";
-				$result = $conn->query($sql);
-				if ($result->num_rows > 0) {
-					while($row = $result->fetch_assoc()) {
-						echo '<div class="aside"><img src="data:image/png;base64,' . base64_encode($row['product_image']) . '" class="border img-sm reviewimage"></div>';
-					}
-				}
-				?>
-				<h3>Description</h3>
-				<?php
-				include('conn.php');
-				$sql = " SELECT product_description FROM product_data WHERE product_name = '$name' ";
-				if ($result = $conn->query($sql)) {
-					while ($row = $result->fetch_assoc()) {
-						$proddesc = $row["product_description"];
-					}
-				}
-				echo
-					'
-					<p>'.$proddesc.'</p>
-					';
-				?>
 				<div class="row">
 					<aside class="col-md-10">
 						<!-- ============================ COMPONENT VIEW REVIEW  ================================= -->
 						<div class="card">
 						  <div class="card-body">
+						  
+							<?php
+							include('conn.php');
+							$sql = "SELECT product_image FROM product_data WHERE product_name = '$name'";
+							$result = $conn->query($sql);
+							if ($result->num_rows > 0) {
+								while($row = $result->fetch_assoc()) {
+									echo '<div class="aside"><img src="data:image/png;base64,' . base64_encode($row['product_image']) . '" class="border img-sm reviewimage"></div>';
+								}
+							}
+							?>
+							<h3>Description</h3>
+							<?php
+							include('conn.php');
+							$sql = " SELECT product_description FROM product_data WHERE product_name = '$name' ";
+							if ($result = $conn->query($sql)) {
+								while ($row = $result->fetch_assoc()) {
+									$proddesc = $row["product_description"];
+								}
+							}
+							echo
+							'
+							<p>'.$proddesc.'</p>
+							';
+							?>
+						  
 						  <h4 class="card-title mb-4">What people think about this</h4>
 						  
 								<div class="card p-3 mt-2">
