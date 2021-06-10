@@ -53,7 +53,6 @@
 									$reviewIdErr = '<div class="alert alert-warning" role="alert">Review id cannot be empty.</div>';
 								} else {
 									$review_id = $_POST["review_id"];
-									echo '<p>'.$review_id.'</p>';
 								}
 								
 								if ($itemNameErr == "" && $reviewDataErr == "" && $reviewIdErr == ""){
