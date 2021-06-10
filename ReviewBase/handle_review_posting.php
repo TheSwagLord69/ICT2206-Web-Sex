@@ -80,6 +80,19 @@
 							?>
 							<?php echo $itemNameErr; ?>
 							<?php echo $reviewDataErr; ?>
+							<?php
+							echo '<div class="col-md-3">';
+								echo '<figure class="itemside mb-4">';
+										echo '<figcaption class="info align-self-center">';
+											echo '<form action="viewing_review.php" method="post">';
+												echo '<input type="hidden" name="item_name" value="' . $product_name . '" />';
+												echo '<button name="review" value="review" type="submit" class="btn btn-link title">' . $product_name . '</button>';
+											echo '</form>';
+										echo '</figcaption>';
+								echo '</figure>';
+							echo '</div>';
+							?>
+							<a href="#"></a>
 						  </div> <!-- card-body.// -->
 						</div> <!-- card .// -->
 						<!-- ============================ COMPONENT DO REVIEW END.// ================================= -->
