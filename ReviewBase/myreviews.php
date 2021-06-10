@@ -71,6 +71,7 @@
 													<button name="review" value="review" type="submit" class="btn btn-link text-primary btn-sm" style="color:#0B6623;"><small class="font-weight-bold">edit</small></button>
 												</form>
 												<form action="delete_review.php" method="post">
+													<input type="hidden" name="review_id" value="'.$reviewid.'" />
 													<input type="hidden" name="item_name" value="'.$productname.'" />
 													<button name="review" value="review" type="submit" class="btn btn-link text-primary btn-sm" style="color:#9D0000;"><small class="font-weight-bold">delete</small></button>
 												</form>
