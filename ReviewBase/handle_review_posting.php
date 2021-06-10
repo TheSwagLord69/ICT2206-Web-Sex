@@ -29,7 +29,6 @@
 						<!-- ============================ COMPONENT DO REVIEW  ================================= -->
 						<div class="card">
 						  <div class="card-body">
-						  <h4 class="card-title mb-4">Your review has been posted successfully or unsuccessfully</h4>
 							<?php
 
 							$itemNameErr = $reviewDataErr = "";
@@ -70,6 +69,10 @@
 									
 									$conn->query($sql);
 									$conn->close();
+									
+									echo '<h4 class="card-title mb-4">Your review has been posted successfully!</h4>';
+								} else {
+									echo '<h4 class="card-title mb-4">Your review is unsuccessful</h4>';
 								}
 
 							}
