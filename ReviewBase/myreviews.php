@@ -64,6 +64,17 @@
 											<div class="action d-flex justify-content-between mt-2 align-items-center">
 												<div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
 											</div>
+											<div>
+												<form action="edit_review.php" method="post">
+													<input type="hidden" name="review_id" value="'.$reviewid.'" />
+													<input type="hidden" name="item_name" value="'.$productname.'" />
+													<button name="review" value="review" type="submit" class="btn btn-link text-primary btn-sm" style="color:#0B6623;"><small class="font-weight-bold">edit</small></button>
+												</form>
+												<form action="delete_review.php" method="post">
+													<input type="hidden" name="item_name" value="'.$productname.'" />
+													<button name="review" value="review" type="submit" class="btn btn-link text-primary btn-sm" style="color:#9D0000;"><small class="font-weight-bold">delete</small></button>
+												</form>
+											</div>
 										</div>
 										';
 								}
