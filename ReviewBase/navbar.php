@@ -36,6 +36,7 @@
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
 				  <ul class="dropdown-menu" role="menu">
+					<li><a href="myprofile.php">My Profile</a></li>
 					<li><a href="myreviews.php">My Reviews</a></li>
 					<li class="divider"></li>
 					<li><a href="logout.php">Log out</a></li>
