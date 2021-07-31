@@ -16,6 +16,7 @@
 	  <ul class="nav navbar-nav">
 		<li><a href="category.php">Category of products</a></li>
 		<li><a href="aboutus.php">About us</a></li>
+		<li><a href="usersearch.php">User search</a></li>
 	  </ul>
 	  <ul class="nav navbar-nav navbar-right">
 		<?php
