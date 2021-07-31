@@ -39,6 +39,7 @@
 					<li><a href="myprofile.php">My Profile</a></li>
 					<li><a href="myreviews.php">My Reviews</a></li>
 					<li class="divider"></li>
+					<li><a href="changepassword.php">Change Password</a></li>
 					<li><a href="logout.php">Log out</a></li>
 				  </ul>
 				</li>
