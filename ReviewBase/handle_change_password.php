@@ -40,28 +40,28 @@
 									$cpasswordErr = '<div class="alert alert-danger" role="alert">Current password cannot be nothing.</div>';
 								} else {
 									$current_password = $_POST["cpassword"];
-									echo '<p>current password:'.$current_password.'</p>';
+									//echo '<p>current password:'.$current_password.'</p>';
 								}
 
 								if (empty($_POST["npassword"])) {
 									$npasswordErr = '<div class="alert alert-warning" role="alert">New password cannot be empty.</div>';
 								} else {
 									$new_password = $_POST["npassword"];
-									echo '<p>new password:'.$new_password.'</p>';
+									//echo '<p>new password:'.$new_password.'</p>';
 								}
 								
 								if (empty($_POST["cnpassword"])) {
 									$cnpasswordErr = '<div class="alert alert-warning" role="alert">Confirm new password cannot be empty.</div>';
 								} else {
 									$confirm_new_password = $_POST["cnpassword"];
-									echo '<p>confirm new password:'.$confirm_new_password.'</p>';
+									//echo '<p>confirm new password:'.$confirm_new_password.'</p>';
 								}
 								
 								//Check if new password and confirm new password are the same
 								if (($_POST["cnpassword"])!=($_POST["npassword"])) {
 									$notsameErr = '<div class="alert alert-warning" role="alert">New password and confirm new password must be the same.</div>';
 								} else {
-									echo '<p>New Passwords match each other</p>';
+									//echo '<p>New Passwords match each other</p>';
 								}
 								
 								//Check if password entered is the same as current password in the db
@@ -76,7 +76,7 @@
 								if (($_POST["cpassword"])!=($dbpassword)) {
 									$wrongcurrentpassErr = '<div class="alert alert-warning" role="alert">Current password is incorrect.</div>';
 								} else {
-									echo '<p>Current password is correct</p>';
+									//echo '<p>Current password is correct</p>';
 								}
 								
 								//Update new password in db
