@@ -48,7 +48,7 @@
 											<div class="d-flex justify-content-between align-items-center">
 												<form action="handle_change_password.php" method="post">
 													<label for="currentpassword">Current Password:</label><br>
-													<input type="text" id="cpassword" name="cpassword" value="'.$password.'"><br>
+													<input type="text" id="cpassword" name="cpassword" value=""><br>
 													<label for="newpassword">New Password:</label><br>
 													<input type="text" id="npassword" name="npassword" value=""><br><br>
 													<label for="confirmpassword">Confirm New Password:</label><br>
